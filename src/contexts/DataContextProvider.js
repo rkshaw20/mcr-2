@@ -1,21 +1,28 @@
-import { createContext, useContext, useReducer } from "react"
+import { createContext, useContext, useReducer, useState } from "react"
+import { habits } from "../db";
+import { v4 as uuid } from 'uuid';
 
 
 const DataContext=createContext({
-    products:[],
+    habitsList:[],
     dispatch:()=>{},
+    archiveList:[],
 })
 
-export const useDataContext=()=>useContext(createContext);
+export const useDataContext=()=>useContext(DataContext);
 
 
-const dataInitialValue={products:[]}
-const dataReducer=(state, action)=>{}
+// const dataInitialValue={habits:habits}
+// const dataReducer=(state, action)=>{
+
+// }
 
 const DataContextProvider=({children})=>{
-    const [state , dispatch]= useReducer(dataReducer, dataInitialValue);
-    return (
-        <DataContext.Provider value={{products:state.products, dispatch}}>
+    const [habitsList, setHabitsList]=useState(habits);
+    const [archiveList,setArchiveList]=useState([])
+   
+          return (
+        <DataContext.Provider value={{habitsList, setHabitsList,archiveList,setArchiveList}}>
             {children}
         </DataContext.Provider>
     )
