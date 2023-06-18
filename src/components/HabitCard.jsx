@@ -20,6 +20,11 @@ const HabitCard = ({ habit }) => {
     setHabitsList(habits);
   };
 
+  const handleDelete = (itemId) => {
+    const updatedHabits = habitsList.filter((habit) => habit.id !== itemId);
+    setHabitsList(updatedHabits);
+  };
+
   return (
     <div className="habit-card">
       <h3>{name}</h3>
@@ -30,7 +35,7 @@ const HabitCard = ({ habit }) => {
         <li>Start Date: {startDate}</li>
       </ul>
       <button>Edit</button>
-      <button>Delete</button>
+      <button onClick={()=>handleDelete(id)}>Delete</button>
       <button onClick={()=>handleArchive(id)}>Archive</button>
     </div>
   );

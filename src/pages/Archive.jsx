@@ -4,11 +4,11 @@ import { useDataContext } from "../contexts/DataContextProvider";
 
 
 const Archive=()=>{
-    const {HabitsList} =useDataContext()
+    const {habitsList} =useDataContext()
     return (
         <div className="archive-list">
             <h2>Archive</h2>
-            {HabitsList.map((item)=>(
+            {habitsList.map((item)=>(
                 (item.isArchive) && <HabitCard key={item.id} habit={item}/>
             ))}
         </div>

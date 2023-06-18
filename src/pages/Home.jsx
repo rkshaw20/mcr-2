@@ -125,6 +125,7 @@ const Home = () => {
     
       <div className="habit-list">
         {habitsList.map((habit) => (
+            (!habit.isArchive) &&
           <HabitCard key={habit.id} habit={habit} />
         ))}
       </div>
