@@ -8,7 +8,7 @@ import { useDataContext } from "../contexts/DataContextProvider";
 const HabitCard = ({ habit }) => {
   const { habitsList, setHabitsList } = useDataContext();
 
-  const { id, name, repeat, goal, time, startDate } = habit;
+  const { id, name, repeat, goal, time, startDate, isArchive } = habit;
 
   const handleArchive = (itemId) => {
     const habits = habitsList.map((habit) => {
@@ -36,7 +36,7 @@ const HabitCard = ({ habit }) => {
       </ul>
       <button>Edit</button>
       <button onClick={()=>handleDelete(id)}>Delete</button>
-      <button onClick={()=>handleArchive(id)}>Archive</button>
+     { !isArchive && <button onClick={()=>handleArchive(id)}>Archive</button>} 
     </div>
   );
 };
